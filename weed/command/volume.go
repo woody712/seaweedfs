@@ -38,6 +38,7 @@ type VolumeServerOptions struct {
 	readRedirect          *bool
 	cpuProfile            *string
 	memProfile            *string
+	openCv                *bool
 }
 
 func init() {
@@ -58,6 +59,8 @@ func init() {
 	v.readRedirect = cmdVolume.Flag.Bool("read.redirect", true, "Redirect moved or non-local volumes.")
 	v.cpuProfile = cmdVolume.Flag.String("cpuprofile", "", "cpu profile output file")
 	v.memProfile = cmdVolume.Flag.String("memprofile", "", "memory profile output file")
+	// opencv Library
+	v.openCv = cmdVolume.Flag.String("opencv", false, "enable opencv library")
 }
 
 var cmdVolume = &Command{
