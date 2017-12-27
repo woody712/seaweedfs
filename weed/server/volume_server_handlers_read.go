@@ -143,7 +143,7 @@ func (vs *VolumeServer) GetOrHeadHandler(w http.ResponseWriter, r *http.Request)
 		if r.FormValue("height") != "" {
 			height, _ = strconv.Atoi(r.FormValue("height"))
 		}
-		n.Data, _, _ = images.Resized(ext, n.Data, width, height, r.FormValue("mode"))
+		n.Data, _, _ = images.ResizedByCv(ext, n.Data, width, height, r.FormValue("mode"))
 	}
 
 	if e := writeResponseContent(filename, mtype, bytes.NewReader(n.Data), w, r); e != nil {
